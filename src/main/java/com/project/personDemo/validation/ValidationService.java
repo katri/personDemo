@@ -10,7 +10,7 @@ public class ValidationService {
     public static final String ID_WRONG_FORMAT = "ID on vales formaadis";
 
     public static void validateBirthDate(LocalDate date) {
-        LocalDate dateLimit = LocalDate.of(2000, 01, 01);
+        LocalDate dateLimit = LocalDate.of(2000, 1, 1);
         if (date.isBefore(dateLimit)) {
             throw new DateException(DATE_TOO_FAR, "Sa kasutasid kuupäeva: " + date);
         }
@@ -21,8 +21,7 @@ public class ValidationService {
             throw new IdWrongFormat(ID_WRONG_FORMAT, id);
         }
         try {
-            Integer idAsNumber = Integer.parseInt(id);
-            return idAsNumber;
+            return Integer.parseInt(id);
         } catch (NumberFormatException nfe) {
             throw new IdWrongFormat(ID_WRONG_FORMAT, id);
         }
