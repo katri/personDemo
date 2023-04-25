@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @Service
 public class PersonService {
     @Resource
@@ -21,6 +23,10 @@ public class PersonService {
     public PersonDto addNewPerson(PersonDto request) {
         Person person = personMapper.toEntity(request);
         personRepository.save(person);
+        return personMapper.toDto(person);
+    }
+    public PersonDto getPersonBy(String id) {
+        Person person = personRepository.getReferenceById(parseInt(id));
         return personMapper.toDto(person);
     }
 }

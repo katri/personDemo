@@ -1,10 +1,7 @@
 package com.project.personDemo;
 
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +19,10 @@ public class PersonController {
     @PostMapping("/new")
     public PersonDto addNewPerson(PersonDto request) {
         return personService.addNewPerson(request);
+    }
+
+    @GetMapping("/{id}")
+    public PersonDto getPersonBy(@PathVariable String id) {
+        return personService.getPersonBy(id);
     }
 }
