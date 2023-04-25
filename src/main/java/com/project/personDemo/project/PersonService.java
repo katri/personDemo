@@ -1,4 +1,4 @@
-package com.project.personDemo;
+package com.project.personDemo.project;
 
 import com.project.personDemo.validation.ValidationService;
 import jakarta.annotation.Resource;

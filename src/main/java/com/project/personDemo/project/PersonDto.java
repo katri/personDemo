@@ -1,4 +1,4 @@
-package com.project.personDemo;
+package com.project.personDemo.project;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
