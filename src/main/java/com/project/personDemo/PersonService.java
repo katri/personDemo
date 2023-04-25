@@ -29,4 +29,13 @@ public class PersonService {
         Person person = personRepository.getReferenceById(parseInt(id));
         return personMapper.toDto(person);
     }
+
+    public PersonDto updatePerson(PersonDto request) {
+        Person person = personRepository.getReferenceById(request.getId());
+        person.setBirthDate(request.getBirthDate());
+        person.setFirstName(request.getFirstName());
+        person.setLastName(request.getLastName());
+        personRepository.save(person);
+        return personMapper.toDto(person);
+    }
 }

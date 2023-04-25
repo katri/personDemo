@@ -25,4 +25,9 @@ public class PersonController {
     public PersonDto getPersonBy(@PathVariable String id) {
         return personService.getPersonBy(id);
     }
+
+    @PutMapping("/update")
+    public PersonDto updatePerson(PersonDto request) {
+        return personService.updatePerson(request);
+    }
 }
