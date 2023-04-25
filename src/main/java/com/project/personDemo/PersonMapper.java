@@ -9,6 +9,7 @@ public interface PersonMapper {
     Person toEntity(PersonDto personDto);
 
     PersonDto toDto(Person person);
+
     List<PersonDto> toDto(List<Person> person);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

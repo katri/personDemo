@@ -17,4 +17,10 @@ public class PersonService {
         List<Person> persons = personRepository.findAll();
         return personMapper.toDto(persons);
     }
+
+    public PersonDto addNewPerson(PersonDto request) {
+        Person person = personMapper.toEntity(request);
+        personRepository.save(person);
+        return personMapper.toDto(person);
+    }
 }
