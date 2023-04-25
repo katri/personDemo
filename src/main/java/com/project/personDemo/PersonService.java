@@ -1,11 +1,10 @@
 package com.project.personDemo;
 
+import com.project.personDemo.validation.ValidationService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 @Service
 public class PersonService {
@@ -21,12 +20,15 @@ public class PersonService {
     }
 
     public PersonDto addNewPerson(PersonDto request) {
+        ValidationService.validateBirthDate(request.getBirthDate());
         Person person = personMapper.toEntity(request);
         personRepository.save(person);
         return personMapper.toDto(person);
     }
+
     public PersonDto getPersonBy(String id) {
-        Person person = personRepository.getReferenceById(parseInt(id));
+        Integer idAsInteger = ValidationService.validateId(id);
+        Person person = personRepository.getReferenceById(idAsInteger);
         return personMapper.toDto(person);
     }
 
