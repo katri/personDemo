@@ -31,3 +31,13 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+task makePersonDemoApp (type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'com/project/personDemo/PersonDemoApplication'
+    }
+    baseName = 'person-demo'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
