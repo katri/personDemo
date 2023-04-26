@@ -1,7 +1,7 @@
 package com.project.personDemo.infrastructure;
 
 import com.project.personDemo.infrastructure.error.ApiError;
-import com.project.personDemo.infrastructure.exception.IdWrongFormat;
+import com.project.personDemo.infrastructure.exception.IdWrongFormatException;
 import com.project.personDemo.infrastructure.exception.DateException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler
-    public ResponseEntity<ApiError> handleIdWrongFormat(IdWrongFormat exception) {
+    public ResponseEntity<ApiError> handleIdWrongFormat(IdWrongFormatException exception) {
         ApiError apiError = new ApiError();
         apiError.setTitle(exception.getTitle());
         apiError.setStatusCode(HttpStatus.NOT_FOUND.value());

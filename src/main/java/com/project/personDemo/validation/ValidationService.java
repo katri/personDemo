@@ -1,6 +1,6 @@
 package com.project.personDemo.validation;
 
-import com.project.personDemo.infrastructure.exception.IdWrongFormat;
+import com.project.personDemo.infrastructure.exception.IdWrongFormatException;
 import com.project.personDemo.infrastructure.exception.DateException;
 
 import java.time.LocalDate;
@@ -18,12 +18,12 @@ public class ValidationService {
 
     public static Integer validateId(String id) {
         if (id == null) {
-            throw new IdWrongFormat(ID_WRONG_FORMAT, id);
+            throw new IdWrongFormatException(ID_WRONG_FORMAT, "id on puudu");
         }
         try {
             return Integer.parseInt(id);
         } catch (NumberFormatException nfe) {
-            throw new IdWrongFormat(ID_WRONG_FORMAT, id);
+            throw new IdWrongFormatException(ID_WRONG_FORMAT, id);
         }
     }
 }
